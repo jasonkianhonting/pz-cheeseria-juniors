@@ -10,8 +10,12 @@ const jsonParser = bodyParser.json();
 const router = express.Router();
 
 //routes
-router.get("/api/cheeses", (req, res, next) => {
-	res.json(cheeses);
+router.get("/api/cheeses", async (req, res, next) => {
+	try {
+		await res.json(cheeses);
+	} catch (err) {
+		res.status(err.message);
+	}
 });
 
 //API route to post the items in the cart to be purchased into a JSON file in data/purchases.json
@@ -37,17 +41,15 @@ router.post("/api/purchases", jsonParser, async (req, res) => {
 			JSON.stringify(purchases, null, 2),
 			(err) => {
 				if (err) {
-					res.status(400).json("Unable To Retrieve Data");
+					res.status(400).json(err.message);
 				} else {
-					res.status(200).json("Data Retreived Successfully");
+					res.status(200).json("Purchase was successful");
 				}
 			}
 		);
-		res.status(200).json("Your Purchase Is Successful, Thank You");
+		res.status(200).json("Purchase was successful");
 	} catch (err) {
-		res
-			.status(400)
-			.json("Your Purchase has been unsuccessful, please contact the admin");
+		res.status(400).json(err.message);
 	}
 });
 
@@ -57,9 +59,9 @@ router.post("/api/purchases", jsonParser, async (req, res) => {
 router.get("/api/purchases", async (req, res, next) => {
 	try {
 		await res.json(purchases);
-		res.status(200).json("Data Retreived Successfully");
-	} catch (e) {
-		res.status(400).json("Data Cannot Be Retreived, Please Contact The Admin");
+		res.status(200);
+	} catch (error) {
+		res.status(400).json(error.message);
 	}
 });
 
