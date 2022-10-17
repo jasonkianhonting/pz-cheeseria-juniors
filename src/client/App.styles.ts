@@ -14,7 +14,8 @@ export const StyledButton = withStyles({
 export const StyledAppBar = styled(AppBar)`
 	background: white;
 	margin-bottom: 15px;
-	border-radius: 20px;
+	border-radius: 40px;
+	border-color: black
 `;
 
 export const HeaderTypography = withStyles({

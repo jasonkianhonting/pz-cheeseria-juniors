@@ -39,7 +39,7 @@ const Cart: React.FC<Props> = ({
 	//the dialog will remains open until another choice has been made
 	const handleClickDialogOpen = () => {
 		cartItems.length === 0
-			? alert("No items in the cart to purchase")
+			? alert("There Are No Items In The Cart")
 			: setDialogOpen(true);
 	};
 
@@ -74,11 +74,11 @@ const Cart: React.FC<Props> = ({
 			//dialog is then closed, the cart is then emptied before alerting and returning the data
 			handleDialogClose();
 			emptyCart();
-			alert("Item has been purchased succesfully");
+			alert("The Items Have Been Purchased Successfully");
 			return jsonData;
 		} catch (err) {
 			alert(
-				"Item has not been purchased successfully, please contact the admin"
+				"The Items Have Not Been Purchased Successfully, Please Contact The Admin"
 			);
 		}
 	};
@@ -97,18 +97,13 @@ const Cart: React.FC<Props> = ({
 			))}
 			<h2>Total: ${calculateTotal(cartItems).toFixed(2)}</h2>
 			<Button
-				color="primary"
+				color="default"
 				variant="contained"
 				onClick={handleClickDialogOpen}
-				data-cy={`checkout_items`}
 			>
 				Checkout
 			</Button>
-			<Dialog
-				open={DialogOpen}
-				onClose={handleDialogClose}
-				data-cy={`purchase_dialog`}
-			>
+			<Dialog open={DialogOpen} onClose={handleDialogClose}>
 				<DialogContent>
 					<DialogContentText>
 						Your total payment for this order is $
@@ -118,17 +113,13 @@ const Cart: React.FC<Props> = ({
 				<DialogActions>
 					<Button
 						color="primary"
+						disableElevation
 						variant="contained"
 						onClick={() => postCart(cartItems)}
-						data-cy={`purchase_button`}
 					>
 						Purchase
 					</Button>
-					<Button
-						variant="contained"
-						onClick={handleDialogClose}
-						data-cy={`purchase_cancel_button`}
-					>
+					<Button variant="contained" onClick={handleDialogClose}>
 						Cancel
 					</Button>
 				</DialogActions>
