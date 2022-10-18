@@ -40,7 +40,7 @@ const RecentPurchases: React.FC = () => {
 			<h2>Recent Purchases</h2>
 			{data?.length === 0 ? (
 				<p>
-					<span>No Recent Purchase.</span>
+					<span data-cy={`no-recent-purchases`}>No Recent Purchase.</span>
 				</p>
 			) : null}
 			{data?.map((item) => (

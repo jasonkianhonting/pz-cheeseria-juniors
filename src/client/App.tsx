@@ -121,7 +121,7 @@ const App = () => {
 						justify="space-between"
 						alignItems="center"
 					>
-						<StyledButton onClick={handlePurchaseOpen}>
+						<StyledButton data-cy ={`recent-purchase-button-styled`} onClick={handlePurchaseOpen}>
 							<RestoreIcon />
 							<Typography variant="subtitle2">Recent Purchases</Typography>
 						</StyledButton>
@@ -130,7 +130,7 @@ const App = () => {
 							Welcome to Patient Zero's Cheeseria
 						</HeaderTypography>
 
-						<StyledButton onClick={handleOpenCart}>
+						<StyledButton data-cy ={`cart-open-button`} onClick={handleOpenCart}>
 							<Badge
 								badgeContent={getTotalItems(cartItems)}
 								color="error"

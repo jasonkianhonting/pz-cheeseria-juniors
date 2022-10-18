@@ -30,26 +30,31 @@ router.post("/api/purchases", jsonParser, async (req, res) => {
 		purchaseTotal: req.body.total,
 	};
 
-	//this piece of code helps to add the items in order into the array of purchaseItem
-	purchases.unshift(purchaseItem);
+	//If statements for server side error handling such that if there are no items in the cart, produces error messages
+	if (purchaseItem.purchaseTotal === 0) {
+		return res.status(400).json("There Are No Items In The Cart");
+	} else {
+		//this piece of code helps to add the items in order into the array of purchaseItem
+		purchases.unshift(purchaseItem);
 
-	//try-catch function that writes the information recorded into purchases.json. If successful, the data will be displayed
-	//otherwise the respective error message will be displayed
-	try {
-		await writeFile(
-			"./src/server/data/purchases.json",
-			JSON.stringify(purchases, null, 2),
-			(err) => {
-				if (err) {
-					res.status(400).json(err.message);
-				} else {
-					res.status(200).json("Purchase was successful");
+		//try-catch function that writes the information recorded into purchases.json. If successful, the data will be displayed
+		//otherwise the respective error message will be displayed
+		try {
+			await writeFile(
+				"./src/server/data/purchases.json",
+				JSON.stringify(purchases, null, 2),
+				(err) => {
+					if (err) {
+						res.status(400).json(err.message);
+					} else {
+						res.status(200).json("Purchase was successful");
+					}
 				}
-			}
-		);
-		res.status(200).json("Purchase was successful");
-	} catch (err) {
-		res.status(400).json(err.message);
+			);
+			res.status(200).json("Purchase was successful");
+		} catch (err) {
+			res.status(400).json(err.message);
+		}
 	}
 });
 

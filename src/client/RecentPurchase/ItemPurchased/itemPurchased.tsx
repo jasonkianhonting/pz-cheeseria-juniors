@@ -19,11 +19,13 @@ const itemPurchased: React.FC<purchaseData> = ({ items, total }) => {
 				<div className="item">
 					<div>
 						<h3>
-							<span>{item.title}</span>
+							<span data-cy={`items-purchased-${item.id}`}>{item.title}</span>
 						</h3>
 						<div>
 							<p>Amount: {item.amount}</p>
-							<p>Total: ${(item.amount * item.price).toFixed(2)}</p>
+							<p data-cy={`total-amount-${total}`}>
+								Total: ${(item.amount * item.price).toFixed(2)}
+							</p>
 						</div>
 					</div>
 					<img src={item.image} alt={item.title} />

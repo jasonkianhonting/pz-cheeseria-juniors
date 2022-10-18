@@ -97,13 +97,18 @@ const Cart: React.FC<Props> = ({
 			))}
 			<h2>Total: ${calculateTotal(cartItems).toFixed(2)}</h2>
 			<Button
+				data-cy={`items-checkout`}
 				color="default"
 				variant="contained"
 				onClick={handleClickDialogOpen}
 			>
 				Checkout
 			</Button>
-			<Dialog open={DialogOpen} onClose={handleDialogClose}>
+			<Dialog
+				data-cy={`cart-dialog`}
+				open={DialogOpen}
+				onClose={handleDialogClose}
+			>
 				<DialogContent>
 					<DialogContentText>
 						Your total payment for this order is $
@@ -112,6 +117,7 @@ const Cart: React.FC<Props> = ({
 				</DialogContent>
 				<DialogActions>
 					<Button
+						data-cy={`button-checkout`}
 						color="primary"
 						disableElevation
 						variant="contained"
@@ -119,7 +125,11 @@ const Cart: React.FC<Props> = ({
 					>
 						Purchase
 					</Button>
-					<Button variant="contained" onClick={handleDialogClose}>
+					<Button
+						data-cy={`cancel-button-checkout`}
+						variant="contained"
+						onClick={handleDialogClose}
+					>
 						Cancel
 					</Button>
 				</DialogActions>
