@@ -71,8 +71,15 @@ You will open the e2e folder, then run following commands to get started
 
 ```bash
 npm install
+```
+
+You can then run:
+
+```bash
 npm test
 ```
+
+to open cypress and carry on with testing
 
 ### Helpful links
 
