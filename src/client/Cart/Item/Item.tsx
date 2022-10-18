@@ -39,7 +39,10 @@ const Item: React.FC<Props> = ({ item, handleAddToCart }) => {
 	};
 	return (
 		<Wrapper>
-			<Button onClick={handleClickDialogOpen}>
+			<Button
+				data-cy={`item-button-${item.id}`}
+				onClick={handleClickDialogOpen}
+			>
 				<div>
 					<img src={item.image} alt={item.title} />
 					<h3>{item.title}</h3>
@@ -55,7 +58,9 @@ const Item: React.FC<Props> = ({ item, handleAddToCart }) => {
 					<DialogContentText>Price: ${item.price}</DialogContentText>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={handleDialogClose}>Ok</Button>
+					<Button data-cy={`item-ok-button`} onClick={handleDialogClose}>
+						Ok
+					</Button>
 				</DialogActions>
 			</Dialog>
 			<Button

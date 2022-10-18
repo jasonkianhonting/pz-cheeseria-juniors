@@ -99,7 +99,7 @@ const Cart: React.FC<Props> = ({
 			<Button
 				data-cy={`items-checkout`}
 				color="default"
-				variant="contained"
+				variant="outlined"
 				onClick={handleClickDialogOpen}
 			>
 				Checkout

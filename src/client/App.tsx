@@ -112,7 +112,7 @@ const App = () => {
 	if (error) return <div>Something went wrong ...</div>;
 
 	return (
-		<Wrapper>
+		<Wrapper data-cy={`home`}>
 			<StyledAppBar position="static">
 				<Toolbar>
 					<Grid
@@ -121,7 +121,10 @@ const App = () => {
 						justify="space-between"
 						alignItems="center"
 					>
-						<StyledButton data-cy ={`recent-purchase-button-styled`} onClick={handlePurchaseOpen}>
+						<StyledButton
+							data-cy={`recent-purchase-button-styled`}
+							onClick={handlePurchaseOpen}
+						>
 							<RestoreIcon />
 							<Typography variant="subtitle2">Recent Purchases</Typography>
 						</StyledButton>
@@ -130,7 +133,7 @@ const App = () => {
 							Welcome to Patient Zero's Cheeseria
 						</HeaderTypography>
 
-						<StyledButton data-cy ={`cart-open-button`} onClick={handleOpenCart}>
+						<StyledButton data-cy={`cart-open-button`} onClick={handleOpenCart}>
 							<Badge
 								badgeContent={getTotalItems(cartItems)}
 								color="error"
