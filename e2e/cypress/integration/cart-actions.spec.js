@@ -7,7 +7,6 @@ context("Cart Actions", () => {
 
 	//Test case 1: add items to cart
 	//Expected: add items to cart
-	//
 	it("Test Case 1: Add items to cart", () => {
 		cy.get("[data-cy=add-to-cart-3]").click();
 		cy.get("[data-cy=add-to-cart-4]").click();
