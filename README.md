@@ -83,7 +83,7 @@ to open cypress and carry on with testing
 
 ## Docker Image
 
-[DockerImage](https://hub.docker.com/repository/docker/jasontkh/pzcheeseriajuniors)
+[Docker Image](https://hub.docker.com/repository/docker/jasontkh/pzcheeseriajuniors)
 
 ## Helpful links
 
