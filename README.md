@@ -24,7 +24,7 @@ Once done, please notify us of your repository details and make sure it is publi
 
 ## Important Scripts
 
-This project was tested with node v16.18.0 and npm v8.11.0.
+This project was tested with **node v16.18.0** and **npm v8.11.0**.
 
 In the project directory, you can run:
 
@@ -32,7 +32,7 @@ In the project directory, you can run:
 npm install
 ```
 
-Which installs all the package dependencies (node v16.18.0). Note that if you encountered any issue
+Which installs all the package dependencies. Note that if you encountered any issue
 while downloading, it is due to different versions of dependencies (mainly dev dependencies) not being compatible, in which case, run:
 
 ```bash
