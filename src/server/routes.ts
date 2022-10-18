@@ -20,6 +20,7 @@ router.get("/api/cheeses", async (req, res, next) => {
 
 //API route to post the items in the cart to be purchased into a JSON file in data/purchases.json
 router.post("/api/purchases", jsonParser, async (req, res) => {
+	
 	//PurchaseId being +1 due to the length starting from 0
 	const purchaseId = purchases.length + 1;
 
@@ -30,7 +31,8 @@ router.post("/api/purchases", jsonParser, async (req, res) => {
 		purchaseTotal: req.body.total,
 	};
 
-	//If statements for server side error handling such that if there are no items in the cart, produces error messages
+	//If statements for server side error handling such that if there are no items in the cart, produces error messages otherwise
+	//proceed with the try-catch statement
 	if (purchaseItem.purchaseTotal === 0) {
 		return res.status(400).json("There Are No Items In The Cart");
 	} else {
@@ -62,11 +64,12 @@ router.post("/api/purchases", jsonParser, async (req, res) => {
 //error messages will be displayed
 
 router.get("/api/purchases", async (req, res, next) => {
+	//try catch statement for error handling
 	try {
 		await res.json(purchases);
 		res.status(200);
 	} catch (error) {
-		res.status(400).json(error.message);
+		res.status(500).json(error.message);
 	}
 });
 
